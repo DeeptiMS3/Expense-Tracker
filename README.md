@@ -12,3 +12,12 @@
  Step 4: Now you can add your Transcations.
 
  Step 5: To visualize your navigate to Summary page (do refresh the page)
+
+ # How Code Works
+
+ 	All the sections of page are included in index.html, here we have income section, expense section and summary section.
+ 	In income section of the page, the form given takes the input of income categories and amount of income for each categories. This is 
+   done using incomeCategories.js script
+ 	Similarly, the budget, expense and transaction is done using expense.js and budgetCategories.js in expense section.
+ 	After all the inputs given the summary of your expense is shown in summary section with the help of charts.
+
