@@ -3,7 +3,7 @@
 
  # How To Use
 
- Step 1: Navigate to Income Page and Add your source of income. Now the source is made availble in the dropdown.
+ Step 1: Navigate to Income Page and Add your source of income. Now the source is made available in the dropdown.
 
  Step 2: Add your Amount of income and select the source of income from the dropdown menu.
 
