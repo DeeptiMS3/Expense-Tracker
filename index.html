@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script type="module" async src="js/main.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar mb-3 sticky-top" style="background-color: #A6B1F7 ;width: 100%;">
+        <div class="container" style="margin-left: 10px;">
+            <a class="navbar-brand" href="">
+                <img src="img/budget.png" alt="Bootstrap" width="50" height="50"> Expense Tracker
+            </a>
+        </div>
+    </nav>
+
+    <div class="container-fuild" style="margin-right: 20px; margin-left: 10px;">
+        <div class="row justify-content-md-left">
+            <div class="col-md-auto">
+                <button class="btn btn-outline-success" id="summaryButton">Summary</button>
+            </div>
+            <div class="col-md-auto">
+                <button class="btn btn-outline-success" id="incomeButton">Income</button>
+            </div>
+            <div class="col-md-auto">
+                <button class="btn btn-outline-success" id="expenseButton">Expense</button>
+            </div>
+            <div class="col-md-auto" style="margin-left: 60%;" id="howtouseBtn">
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    How to use
+                </button>
+            </div>
+        </div>
+
+        <!-- income section -->
+        <div id="incomePage" style="display: none; margin-top: 20px;">
+            <div class="row mb-5">
+                <div class="col-1 spacingCol"></div>
+                <div class="col-md-5 col-sm-12 " id="incomeCategoriesForm">
+                    <div class="aside  p-4">
+                        <h4 class="pb-5 pt-2" style="margin-left: 50px;">Add Income Source</h4>
+                        <form id="incomeForm" style="font-size: 15px;">
+                            <div class="form-group row mb-4">
+                                <label for="incomeSrcSelect" class="col-sm-5 col-form-label">Select Income
+                                    Source</label>
+                                <div class="col-sm-5">
+                                    <select id="incomeSrcSelect" class=" input" style="font-size: 12px;">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-4">
+                                <label for="incomeAmt" class="col-sm-5 col-form-label">Enter Your Income</label>
+                                <div class="col-sm-5">
+                                    <input type="number" id="incomeAmt" class="input" placeholder="Enter income">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-4">
+                                <label for="newIncomeSrc" class="col-sm-5 col-form-label">Or Add new Source</label>
+                                <div class="col-sm-5">
+                                    <input type="text" id="newIncomeSrc" class="input" placeholder="Enter a value">
+                                </div>
+                            </div>
+                            <button type="button" id="storeIncomeButton" class="btn btn-outline-primary"
+                                style="margin-left: 12rem; margin-top: 10px;">Add
+                                Income</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-sm-12 ">
+                    <div class="aside p-4">
+                        <h4 class="pb-3 text-center pt-2">Income Categories</h4>
+                        <div class="chartCard">
+                            <div class="chartBox">
+                                <canvas id="myChartIncomeCategories"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Expense section  -->
+        <div id="exepensePage" style="display: none;  margin-top: 20px;">
+            <div class="row mb-5 ">
+
+                <div class="col-1 spacingCol" style="width: 4.333333%;"></div>
+
+                <div class="col-md-5 col-sm-12">
+                    <div class="aside  p-4">
+                        <h4 class="text-center pb-3 pt-2">Budget Categories</h4>
+                        <div id="budgetCategoriesForm"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="aside  p-4">
+                        <h4 class="text-center pb-3 pt-2">History of Transactions</h4>
+                        <div id="transactions"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- summary section  -->
+        <div id="summaryPage" style="display: block;  margin-top: 20px;">
+            <div class="row mb-5 " id="summaryPage">
+                <div class="col-1 spacingCol"></div>
+
+                <div class="col-md-5 col-sm-12">
+                    <div class="aside p-4">
+                        <h4 class="pb-3 text-center pt-2">Income V/S Expense</h4>
+                        <div class="chartCard">
+                            <div class="chartBox">
+                                <canvas id="myIncomeExpenseChart"></canvas>
+                            </div>
+                            <span style="color: black; font-size: 13px;" id="netIncome">Net Income: </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-sm-12 ">
+                    <div class="aside p-4">
+                        <h4 class="pb-3 text-center pt-2">Budget Categories</h4>
+                        <div class="chartCard">
+                            <div class="chartBox">
+                                <canvas id="myChartBudgetCategories"></canvas>
+                            </div>
+                            <span style="color: black; font-size: 13px;" id="myTotalBudget">Total Budget: </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-sm-12" style="margin-left: 110px;">
+                    <div class="aside p-4">
+                        <h4 class="pb-3 text-center pt-2">Savings</h4>
+                        <div class="chartCard">
+                            <div class="chartBox">
+                                <canvas id="mySavingsSummaryChart"></canvas>
+                            </div>
+                            <span style="color: black; font-size: 13px;" id="SavingsSummary">Your Estimated Savings:
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-sm-12 ">
+                    <div class="aside p-4">
+                        <h4 class="pb-3 text-center pt-2">Budget V/S Expense</h4>
+                        <div class="chartCard">
+                            <div class="chartBox">
+                                <canvas id="myBudgetExpenseChart"></canvas>
+                            </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fs-5" id="staticBackdropLabel">Instructions</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <b>Step 1:</b> Navigate to Income Page and Add your source of income. Now the source is made
+                    availble in the dropdown. <br><br>
+                    <b>Step 2:</b> Add your Amount of income and select the source of income from the dropdown menu.
+                    <br><br>
+                    <b>Step 3:</b> Navigate to Expense Page and Add your Budget. <br><br>
+                    <b>Step 4:</b> Now you can add your Transcations. <br><br>
+                    <b>Step 5:</b> To visualize your navigate to Summary page (do refresh the page) <br><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        const summaryButton = document.getElementById('summaryButton');
+        const incomeButton = document.getElementById('incomeButton');
+        const expenseButton = document.getElementById('expenseButton');
+
+        summaryButton.addEventListener('click', () => {
+            document.getElementById('incomePage').style.display = "none";
+            document.getElementById('summaryPage').style.display = "block";
+            document.getElementById('exepensePage').style.display = "none";
+        });
+
+        incomeButton.addEventListener('click', () => {
+            document.getElementById('incomePage').style.display = "block";
+            document.getElementById('summaryPage').style.display = "none";
+            document.getElementById('exepensePage').style.display = "none";
+        });
+
+        expenseButton.addEventListener('click', () => {
+            document.getElementById('incomePage').style.display = "none";
+            document.getElementById('summaryPage').style.display = "none";
+            document.getElementById('exepensePage').style.display = "block";
+        });
+    </script>
+</body>
+
+</html>

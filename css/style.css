@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+    font-family: "Merriweather", serif;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+}
+
+
+.chartCard {
+    margin: 0px 100px;
+}
+
+.chartBox {
+    width: 290px;
+    padding: 20px;
+    border-radius: 20px;
+    border: solid 3px rgba(54, 162, 235, 1);
+    background: rgb(255, 255, 255);
+}
+
+input[type="number"],
+input[type="text"],
+select {
+    font-size: 12px;
+    outline: none;
+    box-shadow: none;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+    font-size: 12px;
+    outline: none;
+    box-shadow: none;
+}
+
+.budget-tracker {
+    border-collapse: collapse;
+    min-width: 100px;
+
+}
+
+.budget-tracker * {
+    font-family: sans-serif;
+}
+
+.budget-tracker th {
+    text-align: left;
+    padding: 10px 20px;
+    border-bottom: 2px solid #A6B1F7;
+}
+
+.budget-tracker td {
+    padding: 5px;
+}
+
+
+.input {
+    height: 30px;
+    font-size: 13px;
+    padding: 0px 10px;
+    margin: 0px;
+    box-sizing: border-box;
+
+}
+
+.input {
+    border: 1px solid rgba(54, 162, 235, 1);
+    background-color: none;
+    border-radius: 5px;
+    outline: none;
+    color: rgba(54, 162, 235, 1);
+}
+
+.input:focus {
+    border-color: rgba(54, 162, 235, 1);
+}
+
+.expenseTable {
+    font-size: 13px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.expenseTable .input {
+    font-size: 13px;
+    width: 120px;
+}
+
+
+.controls,
+.summary {
+    text-align: right;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    * {
+        font-size: 16px;
+    }
+
+    #howtouseBtn {
+        margin: -39px;
+    }
+
+    .spacingCol {
+        display: none;
+    }
+
+    .aside {
+        padding-left: 0;
+    }
+}
+
+@media screen and (min-width: 425px) and (max-width: 753px) {
+    * {
+        font-size: 13px;
+
+    }
+
+    #howtouseBtn {
+        margin: -30px;
+    }
+
+    .spacingCol {
+        display: none;
+    }
+
+    .aside {
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    * {
+        font-size: 11px;
+
+    }
+
+    #howtouseBtn {
+        margin: -30px;
+    }
+
+    .spacingCol {
+        display: none;
+    }
+
+    .aside {
+        padding-left: 0;
+    }
+}
