@@ -25,8 +25,11 @@ export default class incomeCategories {
             this.myIncome[selectedValue] = incomeAmt;
             localStorage.setItem('myIncome', JSON.stringify(this.myIncome));
         }
-        else {
-            alert("please fill the (source and amount) or new source fields")
+        else {//both selectedValue && incomeAmt are empty
+            if (!newIncomeSrc) {
+                alert("please fill the (source and amount) or new source fields")
+            }
+
         }
         location.reload();
     }
